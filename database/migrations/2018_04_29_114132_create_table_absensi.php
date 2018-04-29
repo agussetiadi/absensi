@@ -13,7 +13,15 @@ class CreateTableAbsensi extends Migration
      */
     public function up()
     {
-        //
+        Schema::create('absensi', function(Blueprint $table){
+            $table->increments('id');
+            $table->integer('user_id');
+            $table->date('date');
+            $table->time('time_in');
+            $table->time('time_out')->nullable();
+            $table->string('note')->nullable();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -23,6 +31,6 @@ class CreateTableAbsensi extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('absensi');
     }
 }
